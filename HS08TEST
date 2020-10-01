@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+
+    int a;
+	float b,to;
+    scanf("%d %f",&a,&b);
+    if(a%5==0)
+    {
+    	to=a+0.5;
+    	if(to<=b)
+    	printf("%.2f",b-to);
+    	else
+    	printf("%.2f",b);
+	}
+	else
+	printf("%.2f",b);
+	return 0;
+}
