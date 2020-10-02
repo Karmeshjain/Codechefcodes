@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+int main(void) 
+{
+	
+	int t;
+    scanf("%d",&t);
+    while(t--)
+    {
+      int num,ouc=0;
+      scanf("%d",&num);
+      while(num>0)
+      {
+      	if(num%10==4)
+      	ouc+=1;
+      	num=num/10;
+	  }
+	  printf("%d\n",ouc);
+
+	}
+	return 0;
+}
+
