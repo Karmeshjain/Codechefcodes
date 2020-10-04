@@ -1,0 +1,25 @@
+#include <iostream> 
+using namespace std;
+int main() 
+{ 
+int t;
+cin>>t;
+while(t--)
+{
+int x,y,k,n;cin>>x>>y>>k>>n;
+int pw=x-y,flag=0;
+for(int i=0;i<n;i++)
+{
+	int nb,pr;cin>>nb>>pr;
+	if(y+nb>=x&&k>=pr)
+	{
+		flag=1;
+	}
+}
+if(flag==0)
+cout<<"UnluckyChef"<<endl;
+else
+cout<<"LuckyChef"<<endl;
+}
+return 0; 
+} 
