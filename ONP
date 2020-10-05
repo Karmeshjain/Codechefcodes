@@ -1,0 +1,46 @@
+#include<bits/stdc++.h> 
+using namespace std;
+
+int main() 
+{ 
+int t;
+cin>>t;
+while(t--)
+{
+string expr,res="";
+		cin>>expr;
+		int i=0;
+		stack<char> s;
+		while(expr[i]!='\0')
+		{
+			if(isalpha(expr[i]))
+			{
+				res+=expr[i];
+			}
+			else{
+				if(!s.empty())
+				{
+					if(expr[i]==')')
+					{
+						while(s.top()!='(')
+						{
+							res+=s.top();
+							s.pop();
+						}
+						s.pop();
+					}
+					else{
+						s.push(expr[i]);
+					}
+				}
+				else{
+					s.push(expr[i]);	
+				}
+				
+			}
+			i++;
+		}
+		cout<<res<<endl;
+}
+return 0; 
+} 
