@@ -1,0 +1,24 @@
+#include <bits/stdc++.h> 
+
+using namespace std; 
+
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int fac,ans;
+		cin>>fac;
+		ans=1;
+		for(int i=fac;i>=1;i--)
+		{
+			ans=ans*i;
+		}
+		cout<<ans<<endl;
+				
+	}
+	
+	
+	return 0;
+}
