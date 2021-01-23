@@ -1,0 +1,21 @@
+#include <bits/stdc++.h> 
+
+using namespace std; 
+
+int main()
+{	
+	int i,j,n,sum=0;
+	cin>>n;
+	while(n--)
+	{
+		cin>>j;
+		sum=0;
+		while(j!=0)
+		{
+			sum+=j/5;
+			j=j/5;
+		}
+		cout<<sum<<endl	;
+    }
+	return 0;
+}
