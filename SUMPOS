@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+    int x,y,z,flag=0;
+    cin>>x>>y>>z;
+    if(x>y)
+    {
+    	if(x>z)
+    	{
+    		if(x==y+z)
+    		flag=1;
+		}
+	}
+     if(y>x)
+	{
+		if(y>z)
+		{
+			if(y==x+z)
+			flag=1;
+		}
+	}
+	if(z==x+y)
+		flag=1;
+	if(flag==1)
+	cout<<"YES"<<endl;
+	else
+	cout<<"NO"<<endl;
+    }
+   return 0;
+}
