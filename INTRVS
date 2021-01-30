@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+    int n,k;
+    cin>>n>>k;
+    int a,ac=0,tslow=0,botqs=0,ques=0,minsol;
+	if(n%2==0)
+	minsol=n/2;
+	else
+	minsol=n/2+1;    
+    for(int i=0;i<n;i++)
+    {
+    	cin>>a;
+    	if(a!=-1)
+    	ques+=1;
+    	if(a>k)
+    	tslow=1;
+    	if(a<=1&&a>=0)
+    	botqs++;
+    
+	}
+	if(botqs==n)
+	cout<<"Bot";
+	else if(ques<minsol)
+	cout<<"Rejected";
+	else if(tslow==1)
+    cout<<"Too Slow";
+    else
+	cout<<"Accepted";
+	cout<<endl;
+    }
+   return 0;
+}
