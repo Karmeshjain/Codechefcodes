@@ -1,0 +1,150 @@
+#include <bits/stdc++.h>
+using namespace std;
+int concat(char a,char b) 
+{ 
+    int x=a-'0',y=b-'0';
+    int z=10*x+y;
+    return z;
+} 
+string print24(string str,string ampm)
+{
+    string res;
+    int h1 = (int)str[1] - '0';
+    int h2 = (int)str[0] - '0';
+    int hh = (h2 * 10 + h1 % 10);
+    if (ampm == "AM")
+    {
+        if (hh == 12)
+        {
+            res+="00";
+            res+=str[3];
+			res+=str[4];
+        }
+        else
+        {
+		res+=str[0];
+		res+=str[1];
+		res+=str[3];
+		res+=str[4];
+	    }
+    }
+    else
+    {
+        if (hh == 12)
+        {
+            res+="12";
+                res+=str[3];
+			res+=str[4];
+        }
+        else
+        {
+            hh = hh + 12;
+            string hour=to_string(hh);
+            res+=hour;
+             res+=str[3];
+			res+=str[4];
+        }
+    }
+    return res;
+}
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		string p,pam,mainresult;cin>>p>>pam;
+		int n;cin>>n;
+		string a=print24(p,pam);
+		for(int i=0;i<n;i++)
+		{
+			string l,r,lap,rap;cin>>l>>lap;
+			cin>>r>>rap;
+			string b,c;
+			b=print24(l,lap);
+			c=print24(r,rap);
+		int ahr=concat(a[0],a[1]);int amin=concat(a[2],a[3]);
+			int bhr=concat(b[0],b[1]); int bmin=concat(b[2],b[3]);
+			int chr=concat(c[0],c[1]);int cmin=concat(c[2],c[3]);	
+            if(bhr<ahr && chr>ahr)
+            	mainresult+='1';
+            else if(bhr<ahr)
+            {
+            	if(chr==ahr)
+            	{
+            		if(amin<=cmin)
+            		mainresult+='1';
+            		else
+            		mainresult+='0';
+				}
+				else
+				mainresult+='0';
+			}
+			else if(chr>ahr)
+			{
+				if(bhr==ahr)
+				{
+					if(bmin<=amin)
+					mainresult+='1';
+					else
+					mainresult+='0';
+				}
+				else
+				mainresult+='0';
+			}
+			else if(ahr==bhr&&ahr==chr)
+			{
+				if(cmin>=amin&&amin>=bmin)
+				mainresult+='1';
+				else
+				mainresult+='0';
+			}
+			else if(chr==ahr)
+			{
+				if(amin<=cmin)
+				{
+					if(ahr>bhr)
+				    mainresult+='1';
+				    else if(ahr==bhr)
+				    {
+				    	if(amin<=bmin)
+				    	mainresult+='1';
+				    	else
+				    	mainresult+='0';
+					}
+					else
+					mainresult+='0';
+				}
+				else
+				mainresult+='0';
+			}
+            else if(bhr==ahr)
+            {
+            	if(amin>=bmin)
+            	{
+            		if(chr>ahr)
+					mainresult+='1';
+					else if(chr==ahr)
+					{
+						if(cmin>=amin)
+						mainresult+='1';
+						else
+						mainresult+='0';
+					}
+					else
+					mainresult+='0';
+				}
+				else
+				mainresult+='0';
+			}
+			else
+            mainresult+='0';
+		}
+    	cout<<mainresult<<endl;
+	}
+	
+    return 0;
+}
