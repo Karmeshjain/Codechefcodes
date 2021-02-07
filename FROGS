@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define loop(i,a,b) for(int i=(a);i<=(b);i++)
+int getindex(vector<int> v,int K)
+{
+	auto it=find(v.begin(),v.end(),K);
+	if(it!=v.end())
+	{
+		int index=it-v.begin();
+		return index;
+	}
+	else
+	return -1;
+}
+
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+cout.tie(NULL);
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	int n,count=0;cin>>n;
+	vector<int> a;
+	for(int i=0;i<n;i++)
+	{int val;cin>>val;
+	a.push_back(val);
+	}
+	vector<int> pos(n);loop(i,0,n-1) pos[i]=i;
+	vector<int> l;
+    for(int j=0;j<n;j++)
+    {
+    	int val;cin>>val;
+    	l.push_back(val);
+	}
+	vector<int> b(n);loop(i,0,n-1) b[i]=a[i];
+	sort(b.begin(),b.end());
+    for(int j=1;j<n;j++)
+    {
+    	int index=getindex(a,b[j]);
+    	int p=pos[getindex(a,b[j-1])];
+    	int c=index;
+    	while(c<=p)
+    	{
+    		c+=l[index];
+    		pos[index]=c;
+    		count++;
+		}
+	}
+    cout<<count<<endl;
+	}
+    return 0;
+}
+
