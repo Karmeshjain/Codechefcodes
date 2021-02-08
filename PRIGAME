@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+const long long n=1000001;
+bool prime[n];
+long long arr[n];
+void SieveOfEratosthenes(long long n)
+{
+    memset(prime, true, sizeof(prime));
+ 
+    for (long long p = 2; p * p <= n; p++)
+    {
+        if (prime[p] == true) 
+        {
+            for (long long i = p * p; i <= n; i += p)
+                prime[i] = false;
+        }
+    }
+    long long count=0;arr[0]=0;arr[1]=0;
+    for (long long p = 2; p <= n; p++)
+        {
+		if (prime[p])
+			count++;
+			arr[p]=count;
+		}
+		
+}
+int main()
+{
+	ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+	long long t;
+	cin>>t;
+	SieveOfEratosthenes(n);
+	while(t--)
+	{
+      long long x,y,flag=1;
+      cin>>x>>y;
+      if( arr[x]>y)
+      cout<<"Divyam\n";
+      else
+      cout<<"Chef\n";
+	}
+    return 0;
+}
+
+
