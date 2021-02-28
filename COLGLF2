@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main() 
+{
+	
+    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+   ll t;
+   cin>>t;
+   while(t--)
+   {
+   	 ll res=0;
+     ll s;
+     cin>>s;
+     ll intros[s];
+     for(ll i=0;i<s;i++)
+     {
+	 cin>>intros[i];
+//	 intromin+=intros[i];
+         }
+     for(ll j=0;j<s;j++)
+     {
+     	ll epcount;cin>>epcount;
+     	ll epmin[epcount];
+     	for(ll k=0;k<epcount;k++)
+     	{
+     	 	cin>>epmin[k];
+     	 	res+=(epmin[k]-intros[j]);
+		}
+		res=res+intros[j];
+	 }
+     cout<<res<<'\n';
+   }
+    return 0;
+}
