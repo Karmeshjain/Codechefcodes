@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() 
+{
+	
+    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+   int t;
+   cin>>t;
+   while(t--)
+   {
+   	int d,c;
+   	cin>>d>>c;
+   	int a[3],b[3];
+   	int sumd1=0,sumd2=0;
+   	for(int i=0;i<3;i++)
+   	{
+	   cin>>a[i];
+	   sumd1+=a[i];
+    }
+   	for(int i=0;i<3;i++)
+   	{
+	   cin>>b[i];
+	   sumd2+=b[i];
+    }
+     if(sumd1>=150 || sumd2>=150)
+     {
+     if(sumd1>=150&&sumd2>=150)
+     {
+     	if((2*d)>c)
+     	cout<<"YES";
+     	else
+     	cout<<"NO";
+	 }
+	 else 
+	 {
+	 	if((2*d)>c+d)
+	 	cout<<"YES";
+	 	else
+	 	cout<<"NO";
+	 }
+	 }
+   	 else
+   	 cout<<"NO";
+   	 cout<<'\n';
+   }
+    return 0;
+}
