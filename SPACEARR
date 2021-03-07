@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>//KarmeshDuggar
+using namespace std;
+#define ll long long
+
+int main() 
+{
+    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    vector<long long> power(31);
+    for(int i=0;i<=30;i++)
+    power[i]=pow(2,i);
+    int t;
+    cin>>t;
+    while(t--)
+    {
+    	int n;
+    	cin>>n;
+    	vector<int> arr(n);
+    	for(int i=0;i<n;i++)
+    	cin>>arr[i];
+    	sort(arr.begin(),arr.end());
+    	long long flag=0,val=0;
+    	for(int i=0;i<n;i++)
+    	{
+    		if(arr[i]>(i+1))
+    		{flag=1;break;}
+    		val+=abs(arr[i]-i-1);
+		}
+	//	cout<<val<<"\n";
+		if(flag==1)
+		cout<<"Second";
+	    else if(val%2==0)
+		cout<<"Second";
+		else 
+		cout<<"First";
+		cout<<"\n";
+	}
+    
+    return 0;
+}
