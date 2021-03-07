@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>//KarmeshDuggar
+using namespace std;
+#define ll long long
+
+int main() 
+{
+    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    vector<long long> power(31);
+    for(int i=0;i<=30;i++)
+    power[i]=pow(2,i);
+    int t;
+    cin>>t;
+    while(t--)
+    {
+    	int c;
+    	cin>>c;
+    	int calp=int(log2(c))+1;
+    	long long d=power[calp-1];
+    	long long a=power[calp-1]-1;
+    	long long b=power[calp]-1-c+d;
+    	cout<<a*b<<"\n";
+    	
+	}
+    
+    return 0;
+}
