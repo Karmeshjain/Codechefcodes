@@ -1,0 +1,141 @@
+#include <bits/stdc++.h>//KarmeshDuggar
+using namespace std;
+#define ll long long
+ll findmax(ll a, ll b)
+{
+	if(a>b) return a;
+	return b;
+}
+ll findmin(ll a,ll b)
+{
+	if(a<b) return a;
+	return b;
+}
+ll findprice(ll n,ll e,ll h,ll a,ll b,ll c)
+{
+	if(n<=0)
+	return 0;
+	ll minimumprice=1e15;
+	ll t;
+	if(e>=3 && h>=4 && n>=3)
+	{
+		minimumprice=findmin(minimumprice,findprice(n-3,e-3,h-4,a,b,c) + a+ b +c );
+	}
+	if((e/2 >= 1) && (e/2 >= (3*n -h+2)/3))
+	{
+		if(a-b<0)
+		{
+			t=findmin(n-1,e/2);
+		minimumprice=findmin(minimumprice,(a-b)*t + n*b);
+		}
+		else
+		{
+			t=findmax(1,(3*n-h + 2)/3);
+		minimumprice=findmin(minimumprice,(a-b)*t + n*b);
+		}
+	}
+	if(e-n>=1 && e-n>=n-h)
+	{
+		if(a-c<0)
+		{
+			t=findmin(n-1,e-n);
+			minimumprice=findmin(minimumprice,(a-c)*t + n*c);
+			
+		}
+		else
+		{
+			t=findmax(1,n-h);
+			minimumprice=findmin(minimumprice,(a-c)*t + n*c);
+		}
+	}
+	if(((h-n)/2 >= 1)&& ((h-n)/2 >= n-e))
+	{
+		if(b-c<0)
+		{
+			t=findmin(n-1,(h-n)/2);
+			minimumprice=findmin(minimumprice,(b-c)*t + n*c);
+		}
+		else
+		{
+			t=findmax(1,n-e);
+			minimumprice=findmin(minimumprice,(b-c)*t + n*c);
+		}
+	}
+	if((n<=e) && (n<=h))
+	{
+		minimumprice=findmin(minimumprice,n*c);
+	}
+	if(3*n<=h)
+	{
+		minimumprice=findmin(minimumprice,n*b);
+	}
+	if(2*n<=e)
+	{
+	minimumprice=findmin(minimumprice,n*a);
+	}
+	return minimumprice;
+	
+}
+int main() 
+{
+    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+    	ll n,e,h,a,b,c;
+    	cin>>n>>e>>h>>a>>b>>c;
+    	vector<ll> price;
+    	price.push_back(a);
+        price.push_back(b);
+    	price.push_back(c);
+    	sort(price.begin(),price.end());
+    	ll mainprice=0,frnds=0,om=0,chs=0,ck=0,re=e,rh=h;
+      	for(ll i=0;i<3;i++)
+    	{
+    		if(price[i]==a&&e>=2)
+    		{
+    			 om=e/2;
+    		//	mainprice+=om*a;
+    			e=e-(om*2);
+    			frnds+=om;
+			}
+			else if(price[i]==b&&h>=3)
+			{
+				chs=h/3;
+			//	mainprice+=chs*b;
+				h=h-(chs*3);
+				frnds+=chs;
+			}
+    		else if(price[i]==c&&e>=1&&h>=1)
+    		{
+    			ck=min(e,h);
+    			if(ck==e)
+    			{
+				e=0;
+				h=h-ck;
+				}
+    			else if(ck==h)
+    			{
+    				h=0;
+					e=e-ck;
+				} 
+    		//	mainprice+=ck*c;
+    			frnds+=ck;
+			}
+		} 
+	//	if(frnds<n)
+	//	cout<<"-1"; 
+		if(1)
+		{
+	     mainprice=findprice(n,re,rh,a,b,c);
+	     if(mainprice!=1e15)
+	     cout<<mainprice;
+	     else
+	     cout<<"-1";
+		 }
+		 cout<<"\n";
+     }
+    return 0;
+}
